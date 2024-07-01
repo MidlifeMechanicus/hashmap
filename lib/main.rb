@@ -13,3 +13,8 @@ p new_hash.has?("taurean")
 
 p new_hash.get("matthew")
 p new_hash.has?("matthew")
+
+new_hash.remove("taurean")
+new_hash.remove("matthew")
+
+p new_hash

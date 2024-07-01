@@ -67,7 +67,20 @@ class HashMap
   end
 
   def remove(key)
-    # takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return the deleted entry’s value. If the key isn’t in the hash map, it should return nil.
+    # takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return the deleted entry’s value. 
+    # If the key isn’t in the hash map, it should return nil.
+    value = nil
+    bucket = hash(key)
+    unless buckets[bucket].nil?
+      buckets[bucket].each_with_index do |element, index|
+        if element[0] == key
+          value = element[1]
+          buckets[bucket].delete_at(index)
+          break
+        end
+      end
+    end
+    value
   end
 
   def length
