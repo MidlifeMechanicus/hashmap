@@ -17,7 +17,9 @@ Start by creating a HashMap class. Proceed to create the following methods:
 
 2. #set(key, value) takes two arguments, the first is a key and the second is a value that is assigned to this key. If a key already exists, then the old value is overwritten or we can say that we update the key’s value (e.g. Carlos is our key but it is called twice: once with value I am the old value., and once with value I am the new value.. From the logic stated above, Carlos should contain only the latter value).
 
-- > Hash maps could accommodate various data types for keys like numbers, strings, and even other hashes. But for this project, only handle keys of type strings.
+- Hash maps could accommodate various data types for keys like numbers, strings, and even other hashes. But for this project, only handle keys of type strings.
+
+- Remember to grow your buckets size when it needs to, by calculating if your bucket has reached the load factor. 
 
 3. #get(key) takes one argument as a key and returns the value that is assigned to this key. If key is not found, return nil.
 
