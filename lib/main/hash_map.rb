@@ -39,13 +39,12 @@ class HashMap
   def get(key)
     # takes one argument as a key and returns the value that is assigned to this key. If key is not found, return nil.
     value = nil
-    buckets.each do |index|
-      unless index.nil?
-        index.each do |element|
-          if element[0] == key
-            value = element[1]
-            break
-          end
+    bucket = hash(key)
+    unless buckets[bucket].nil?
+      buckets[bucket].each do |element|
+        if element[0] == key
+          value = element[1]
+          break
         end
       end
     end
@@ -55,13 +54,12 @@ class HashMap
   def has?(key)
     # takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
     key_valid = false
-    buckets.each do |index|
-      unless index.nil?
-        index.each do |element|
-          if element[0] == key
-            key_valid = true
-            break
-          end
+    bucket = hash(key)
+    unless buckets[bucket].nil?
+      buckets[bucket].each do |element|
+        if element[0] == key
+          key_valid = true
+          break
         end
       end
     end
