@@ -1,5 +1,4 @@
 class HashMap
-
   def initialize
     @size = 16
     @buckets = Array.new(@size)
@@ -13,30 +12,29 @@ class HashMap
     hash_code = 0
     prime_number = 31
     key.each_char do |char|
-      hash_code = prime_number * hash_code + char.ord
+      hash_code = (prime_number * hash_code) + char.ord
     end
     hash_code % size
   end
 
   def set(key, value)
-    # takes two arguments, the first is a key and the second is a value that is assigned to this key. 
+    # takes two arguments, the first is a key and the second is a value that is assigned to this key.
     # If a key already exists, then the old value is overwritten or we can say that we update the key’s value.
     bucket = hash(key)
     buckets[bucket] = [] if buckets[bucket].nil?
     buckets[bucket] << [key, value]
     @count += 1
-    resize if (@count.to_f / @size > @load)
-    # need key overwite and size mod
+    resize if @count.to_f / @size > @load
   end
 
   def resize
     # need a way to resize the array
-    old_buckets = self.entries
+    old_buckets = entries
     @size *= 2
     @buckets = Array.new(@size)
     @count = 0
     old_buckets.each do |bucket|
-      self.set(bucket[0], bucket[1])
+      set(bucket[0], bucket[1])
     end
   end
 
@@ -44,12 +42,10 @@ class HashMap
     # takes one argument as a key and returns the value that is assigned to this key. If key is not found, return nil.
     value = nil
     bucket = hash(key)
-    unless buckets[bucket].nil?
-      buckets[bucket].each do |element|
-        if element[0] == key
-          value = element[1]
-          break
-        end
+    buckets[bucket]&.each do |element|
+      if element[0] == key
+        value = element[1]
+        break
       end
     end
     value
@@ -59,30 +55,28 @@ class HashMap
     # takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
     key_valid = false
     bucket = hash(key)
-    unless buckets[bucket].nil?
-      buckets[bucket].each do |element|
-        if element[0] == key
-          key_valid = true
-          break
-        end
+    buckets[bucket]&.each do |element|
+      if element[0] == key
+        key_valid = true
+        break
       end
     end
     key_valid
   end
 
   def remove(key)
-    # takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return the deleted entry’s value. 
+    # takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return the deleted entry’s value.
     # If the key isn’t in the hash map, it should return nil.
     value = nil
     bucket = hash(key)
     unless buckets[bucket].nil?
       buckets[bucket].each_with_index do |element, index|
-        if element[0] == key
-          value = element[1]
-          buckets[bucket].delete_at(index)
-          @count -= 1
-          break
-        end
+        next unless element[0] == key
+
+        value = element[1]
+        buckets[bucket].delete_at(index)
+        @count -= 1
+        break
       end
     end
     value
@@ -104,10 +98,9 @@ class HashMap
     key_list = []
     buckets.each do |bucket|
       next if bucket.nil?
+
       bucket.each do |element|
-        unless element.nil?
-          key_list << element[0]
-        end
+        key_list << element[0] unless element.nil?
       end
     end
     key_list
@@ -118,10 +111,9 @@ class HashMap
     value_list = []
     buckets.each do |bucket|
       next if bucket.nil?
+
       bucket.each do |element|
-        unless element.nil?
-          value_list << element[1]
-        end
+        value_list << element[1] unless element.nil?
       end
     end
     value_list
@@ -132,15 +124,13 @@ class HashMap
     entry_list = []
     buckets.each do |bucket|
       next if bucket.nil?
+
       bucket.each do |element|
-        unless element.nil?
-          entry_list << element
-        end
+        entry_list << element unless element.nil?
       end
     end
     entry_list
   end
-
 end
 
 # Consider separate loop function
