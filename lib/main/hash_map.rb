@@ -125,6 +125,16 @@ class HashMap
 
   def entries
     # returns an array that contains each key, value pair. Example: [[first_key, first_value], [second_key, second_value]].
+    entry_list = []
+    buckets.each do |bucket|
+      next if bucket.nil?
+      bucket.each do |element|
+        unless element.nil?
+          entry_list << element
+        end
+      end
+    end
+    entry_list
   end
 
 end

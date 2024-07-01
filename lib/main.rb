@@ -8,3 +8,4 @@ new_hash.set("D", "Delta")
 
 p new_hash.keys
 p new_hash.values
+p new_hash.entries
