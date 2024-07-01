@@ -89,7 +89,10 @@ class HashMap
   end
 
   def clear
-    # removes al entries in the hash map.
+    # removes all entries in the hash map.
+    @size = 16
+    @buckets = Array.new(@size)
+    @count = 0
   end
 
   def keys

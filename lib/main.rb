@@ -18,3 +18,7 @@ new_hash.remove("taurean")
 new_hash.remove("matthew")
 
 p new_hash.length
+
+new_hash.clear
+
+p new_hash
