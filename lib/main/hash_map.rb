@@ -97,10 +97,30 @@ class HashMap
 
   def keys
     # returns an array containing all the keys inside the hash map.
+    key_list = []
+    buckets.each do |bucket|
+      next if bucket.nil?
+      bucket.each do |element|
+        unless element.nil?
+          key_list << element[0]
+        end
+      end
+    end
+    key_list
   end
 
   def values
     # returns an array containing al the values.
+    value_list = []
+    buckets.each do |bucket|
+      next if bucket.nil?
+      bucket.each do |element|
+        unless element.nil?
+          value_list << element[1]
+        end
+      end
+    end
+    value_list
   end
 
   def entries
@@ -108,3 +128,5 @@ class HashMap
   end
 
 end
+
+# Consider separate loop function
