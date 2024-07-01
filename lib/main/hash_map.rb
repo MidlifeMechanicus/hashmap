@@ -76,6 +76,7 @@ class HashMap
         if element[0] == key
           value = element[1]
           buckets[bucket].delete_at(index)
+          @count -= 1
           break
         end
       end
@@ -84,7 +85,7 @@ class HashMap
   end
 
   def length
-    # returns the number of stored keys in the hash map.
+    @count
   end
 
   def clear

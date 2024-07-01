@@ -17,4 +17,4 @@ p new_hash.has?("matthew")
 new_hash.remove("taurean")
 new_hash.remove("matthew")
 
-p new_hash
+p new_hash.length
