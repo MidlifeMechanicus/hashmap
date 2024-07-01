@@ -54,6 +54,18 @@ class HashMap
 
   def has?(key)
     # takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
+    key_valid = false
+    buckets.each do |index|
+      unless index.nil?
+        index.each do |element|
+          if element[0] == key
+            key_valid = true
+            break
+          end
+        end
+      end
+    end
+    key_valid
   end
 
   def remove(key)

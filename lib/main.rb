@@ -9,4 +9,7 @@ new_hash.set("taurean", "taliah")
 new_hash.set("taliah", "taurean")
 
 p new_hash.get("taurean")
+p new_hash.has?("taurean")
+
 p new_hash.get("matthew")
+p new_hash.has?("matthew")
