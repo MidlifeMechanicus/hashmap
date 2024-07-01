@@ -22,18 +22,22 @@ class HashMap
     # takes two arguments, the first is a key and the second is a value that is assigned to this key. 
     # If a key already exists, then the old value is overwritten or we can say that we update the key’s value.
     bucket = hash(key)
-    p bucket
     buckets[bucket] = [] if buckets[bucket].nil?
-    # buckets.each do |element|
-    #   element[1] = value if element[0] == key
-    # check contains first?
     buckets[bucket] << [key, value]
     @count += 1
+    resize if (@count.to_f / @size > @load)
     # need key overwite and size mod
   end
 
   def resize
     # need a way to resize the array
+    old_buckets = self.entries
+    @size *= 2
+    @buckets = Array.new(@size)
+    @count = 0
+    old_buckets.each do |bucket|
+      self.set(bucket[0], bucket[1])
+    end
   end
 
   def get(key)
