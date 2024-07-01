@@ -17,6 +17,8 @@ Start by creating a HashMap class. Proceed to create the following methods:
 
 2. #set(key, value) takes two arguments, the first is a key and the second is a value that is assigned to this key. If a key already exists, then the old value is overwritten or we can say that we update the key’s value (e.g. Carlos is our key but it is called twice: once with value I am the old value., and once with value I am the new value.. From the logic stated above, Carlos should contain only the latter value).
 
+- > Hash maps could accommodate various data types for keys like numbers, strings, and even other hashes. But for this project, only handle keys of type strings.
+
 3. #get(key) takes one argument as a key and returns the value that is assigned to this key. If key is not found, return nil.
 
 4. #has?(key) takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
@@ -61,7 +63,7 @@ Start by creating a HashMap class. Proceed to create the following methods:
 
 6. After that, populate your hash map with the last node below (doing this will make your hash map exceed your current load factor, hence expanding your buckets and growing your hash map):
 
-`test.set('moon', 'silver')`
+- `test.set('moon', 'silver')`
 
 7. If you have implemented your hash map correctly, the capacity of your new hash map will drop well below your load factor and you will notice that the nodes in your hash map are spread much evenly among your buckets.
 
