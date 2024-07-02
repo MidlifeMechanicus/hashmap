@@ -20,6 +20,8 @@ class HashMap
   def set(key, value)
     # takes two arguments, the first is a key and the second is a value that is assigned to this key.
     # If a key already exists, then the old value is overwritten or we can say that we update the key’s value.
+
+    remove(key) if has?(key)
     bucket = hash(key)
     buckets[bucket] = [] if buckets[bucket].nil?
     buckets[bucket] << [key, value]
