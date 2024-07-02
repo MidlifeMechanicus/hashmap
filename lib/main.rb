@@ -6,18 +6,18 @@ test = HashMap.new
 
 # Populate your hash map using the #set(key, value) method by copying the following:
 
-test.set('apple', 'red')
-test.set('banana', 'yellow')
-test.set('carrot', 'orange')
-test.set('dog', 'brown')
-test.set('elephant', 'gray')
-test.set('frog', 'green')
-test.set('grape', 'purple')
-test.set('hat', 'black')
-test.set('ice cream', 'white')
-test.set('jacket', 'blue')
-test.set('kite', 'pink')
-test.set('lion', 'golden')
+test.set("apple", "red")
+test.set("banana", "yellow")
+test.set("carrot", "orange")
+test.set("dog", "brown")
+test.set("elephant", "gray")
+test.set("frog", "green")
+test.set("grape", "purple")
+test.set("hat", "black")
+test.set("ice cream", "white")
+test.set("jacket", "blue")
+test.set("kite", "pink")
+test.set("lion", "golden")
 
 # Now with a full hash map, try overwriting a few nodes using #set(key, value). By right, this should only over-write the existing values of your nodes and not add new ones.
 
@@ -30,7 +30,7 @@ p test.length
 
 # After that, populate your hash map with the last node below (doing this will make your hash map exceed your current load factor, hence expanding your buckets and growing your hash map):
 
-test.set('moon', 'silver')
+test.set("moon", "silver")
 
 # If you have implemented your hash map correctly, the capacity of your new hash map will drop well below your load factor and you will notice that the nodes in your hash map are spread much evenly among your buckets.
 
